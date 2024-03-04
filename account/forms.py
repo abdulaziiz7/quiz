@@ -41,3 +41,6 @@ class SignUpForm(forms.ModelForm):
         return user
 
 
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=30, widget=forms.TextInput())
+    password = forms.CharField(max_length=128, widget=forms.PasswordInput())

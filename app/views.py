@@ -40,7 +40,6 @@ def question_list(request, slug):
     return render(request, 'app/question_list.html', context)
 
 
-
 def result_list(request):
     filter = ResultFilter(request.GET, queryset=Result.objects.all())
 

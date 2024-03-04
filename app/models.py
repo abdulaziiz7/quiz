@@ -11,6 +11,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Categories"
+
 
 class Question(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -22,6 +25,9 @@ class Question(models.Model):
     def is_correct_check(self, id):
         return self.answers.filter(id=id, is_correct=True).exists()
 
+    class Meta:
+        verbose_name_plural = "Questions"
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
@@ -30,6 +36,9 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "Answers"
 
 
 class Result(models.Model):
@@ -47,10 +56,8 @@ class Result(models.Model):
         self.score = (self.total_correct * 100) / self.total_question
         return super().save(*args, **kwargs)
 
-    @property
     def is_passed(self):
         return self.score >= 60
 
-    @property
-    def is_failed(self):
-        return self.score < 60
+    class Meta:
+        verbose_name_plural = "Results"
