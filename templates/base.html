@@ -12,6 +12,7 @@
         {{ user.phone }}|
     {% else %}
         <a href="{% url 'account:signup' %}">SignUp</a> |
+        <a href="{% url 'account:' %}">SignUp</a> |
     {% endif %}
     <a href="{% url 'app:result_list' %}">Result List</a>
 </header>
